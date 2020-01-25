@@ -10,7 +10,7 @@ h1 {
 }
 
 #container {
-    margin: 60px auto;
+    margin: 50px auto 30px auto;
     width: 50%;
     height: 50%;
     justify-content: center;
@@ -20,4 +20,9 @@ h1 {
 
 .box {
     border: 1px solid #3c3c3c;
+}
+
+#reset {
+    margin: 0 auto;
+    display: block;
 }
