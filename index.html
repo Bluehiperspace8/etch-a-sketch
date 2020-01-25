@@ -13,6 +13,7 @@
     </div>
 
 <script>
+    //function changeColor() {
     let box;
     let container = document.getElementById('container');
     for(i = 1; i <= 256; i++) {
@@ -28,6 +29,9 @@
     for(i = 0; i < boxes.length; i++) {
         boxes[i].style.width = boxWidth;
         boxes[i].style.height = boxHeight;
+        boxes[i].addEventListener('mouseenter', function(e) {
+            e.target.style.backgroundColor = 'red';
+        })
     }
 
 </script>
