@@ -14,32 +14,48 @@
     <button id='reset'> Reset </button>
 
 <script>
+    function createGrid(size) {
+        for(i = 0; i < size; i++) {
+            box = document.createElement('div');
+            box.classList.add('box');
+            container.appendChild(box);
+        }
+    }
+
+    function clearGrid() {
+        let child = container.lastChild;
+        while(child) {
+            container.removeChild(child);
+            child = container.lastChild;
+        }
+    }
+
+    function adjustBoxDimensions(size) {
+        let containerPosition = container.getBoundingClientRect();
+        let containerWidth = containerPosition.width;
+        let boxWidth = ((containerWidth / size) - 2) + 'px';
+        let boxHeight = ((containerWidth / size) / 2) + 'px';
+        let boxes = document.getElementsByClassName('box');
+        for(i = 0; i < boxes.length; i++) {
+            boxes[i].style.width = boxWidth;
+            boxes[i].style.height = boxHeight;
+            boxes[i].addEventListener('mouseenter', function(e) {
+                e.target.style.backgroundColor = 'red';
+            })
+        }
+    }
+
     let box;
     let container = document.getElementById('container');
     let button = document.getElementById('reset');
-    for(i = 1; i <= 256; i++) {
-        box = document.createElement('div');
-        box.classList.add('box');
-        container.appendChild(box);
-    }
-    let containerPosition = container.getBoundingClientRect();
-    let containerWidth = containerPosition.width;
-    let boxWidth = ((containerWidth / 16) - 2) + 'px';
-    let boxHeight = ((containerWidth / 16) / 2) + 'px';
-    let boxes = document.getElementsByClassName('box');
-    for(i = 0; i < boxes.length; i++) {
-        boxes[i].style.width = boxWidth;
-        boxes[i].style.height = boxHeight;
-        boxes[i].addEventListener('mouseenter', function(e) {
-            e.target.style.backgroundColor = 'red';
-        })
-    }
-    newSize = button.addEventListener('click', function() {
-        for(i = 0; i < boxes.length; i++) {
-            boxes[i].style.backgroundColor = 'white';
-        }
+    createGrid(256);
+    adjustBoxDimensions(16);
+    button.addEventListener('click', function() {
         size = prompt('Size of new grid:')
-        return size
+        numberBoxes = size * size;
+        clearGrid();
+        createGrid(numberBoxes);
+        adjustBoxDimensions(size);
     });
 
 </script>
