@@ -22,7 +22,63 @@ h1 {
     border: 1px solid #3c3c3c;
 }
 
+#options {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    margin-left: 10px;
+    border: 1px transparent;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+
 #reset {
-    margin: 0 auto;
-    display: block;
+    background-color: #cecece;
+}
+
+#redColor {
+    background-color: red;
+}
+
+#greenColor {
+    background-color: green;
+}
+
+#blueColor {
+    background-color: blue;
+    color: white
+}
+
+#yellowColor {
+    background-color: yellow;
+}
+
+#orangeColor {
+    background-color: orange;
+}
+
+#purpleColor {
+    background-color: purple;
+    color: white
+}
+
+#brownColor {
+    background-color: brown;
+    color: white;
+}
+
+#blackColor {
+    background-color: black;
+    color: white
+}
+
+#whiteColor {
+    background-color: white;
+    border: 1px solid #3c3c3c;
+}
+
+#rainbow {
+    background-color: pink;
 }

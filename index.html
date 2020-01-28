@@ -11,12 +11,32 @@
     <div id='container'>
 
     </div>
-    <button id='reset'> Reset </button>
+    <div id='options'>
+        <button id='reset' class='button'> Reset </button>
+        <button id='redColor' class='button'> Red </button>
+        <button id='greenColor' class='button'> Green </button>
+        <button id='blueColor' class='button'> Blue </button>
+        <button id='yellowColor' class='button'> Yellow </button>
+        <button id='orangeColor' class='button'> Orange </button>
+        <button id='purpleColor' class='button'> Purple </button>
+        <button id='brownColor' class='button'> Brown </button>
+        <button id='blackColor' class='button'> Black </button>
+        <button id='whiteColor' class='button'> White </button>
+        <button id='rainbow' class='button'> Rainbow </button>
+    </div>
 
 <script>
     function countDecimals(value) {
         if(Math.floor(value) === value) return 0;
         return value.toString().split(".")[1].length || 0; 
+    }
+
+    function getRandomRgb() {
+        let num = Math.round(0xffffff * Math.random());
+        let r = num >> 16;
+        let g = num >> 8 & 255;
+        let b = num & 255;
+        return 'rgb(' + r + ', ' + g + ', ' + b + ')';
     }
 
     function createGrid(size) {
@@ -50,25 +70,106 @@
         for(i = 0; i < boxes.length; i++) {
             boxes[i].style.width = boxWidth;
             boxes[i].style.height = boxHeight;
+            }
+        }
+    
+    function applyColor(activeColor) {
+        if(activeColor == undefined) {
+            return
+        }
+        let boxes = document.getElementsByClassName('box');
+        for(i = 0; i < boxes.length; i++) {
             boxes[i].addEventListener('mouseenter', function(e) {
-                e.target.style.backgroundColor = 'red';
+                e.target.style.backgroundColor = activeColor;
+            })
+        }
+    }
+
+    function applyRainbow() {
+        let boxes = document.getElementsByClassName('box');
+        for(i = 0; i < boxes.length; i++) {
+            boxes[i].addEventListener('mouseenter', function(e) {
+                e.target.style.backgroundColor = getRandomRgb();
             })
         }
     }
 
     let box;
     let container = document.getElementById('container');
-    let button = document.getElementById('reset');
+    let resetButton = document.getElementById('reset');
+    let redButton = document.getElementById('redColor');
+    let greenButton = document.getElementById('greenColor');
+    let blueButton = document.getElementById('blueColor');
+    let yellowButton = document.getElementById('yellowColor');
+    let orangeButton = document.getElementById('orangeColor');
+    let purpleButton = document.getElementById('purpleColor');
+    let brownButton = document.getElementById('brownColor');
+    let blackButton = document.getElementById('blackColor');
+    let whiteButton = document.getElementById('whiteColor');
+    let rainbowButton = document.getElementById('rainbow');
+    let activeColor;
+
     createGrid(256);
     adjustBoxDimensions(16);
-    button.addEventListener('click', function() {
-        size = prompt('Size of new grid:')
+    applyColor(activeColor);
+
+    resetButton.addEventListener('click', function() {
+        size = prompt('Length of sides of square grid:', '16');
         numberBoxes = size * size;
         clearGrid();
         createGrid(numberBoxes);
         adjustBoxDimensions(size);
     });
 
+    redButton.addEventListener('click', function() {
+        activeColor = 'red';
+        applyColor(activeColor);
+    })
+
+    greenButton.addEventListener('click', function() {
+        activeColor = 'green';
+        applyColor(activeColor);
+    })
+
+    blueButton.addEventListener('click', function() {
+        activeColor = 'blue';
+        applyColor(activeColor);
+    })
+
+    yellowButton.addEventListener('click', function() {
+        activeColor = 'yellow';
+        applyColor(activeColor);
+    })
+
+    orangeButton.addEventListener('click', function() {
+        activeColor = 'orange';
+        applyColor(activeColor);
+    })
+
+    purpleButton.addEventListener('click', function() {
+        activeColor = 'purple';
+        applyColor(activeColor);
+    })
+
+    brownButton.addEventListener('click', function() {
+        activeColor = 'brown';
+        applyColor(activeColor);
+    })
+
+    blackButton.addEventListener('click', function() {
+        activeColor = 'black';
+        applyColor(activeColor);
+    })
+
+    whiteButton.addEventListener('click', function() {
+        activeColor = 'white';
+        applyColor(activeColor);
+    })
+
+    rainbowButton.addEventListener('click', function() {;
+        applyRainbow();
+    })
+    
 </script>
 </body>
 </html>
