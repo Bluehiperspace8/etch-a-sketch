@@ -42,8 +42,16 @@ h1 {
     background-color: red;
 }
 
+#redColor:focus {
+    background-color: #d10000;
+}
+
 #greenColor {
     background-color: green;
+}
+
+#greenColor:focus {
+    background-color: rgb(0,100,0);
 }
 
 #blueColor {
@@ -51,12 +59,24 @@ h1 {
     color: white
 }
 
+#blueColor:focus {
+    background-color: rgb(0,0,220);
+}
+
 #yellowColor {
     background-color: yellow;
 }
 
+#yellowColor:focus {
+    background-color: rgb(220,225,0);
+}
+
 #orangeColor {
     background-color: orange;
+}
+
+#orangeColor:focus {
+    background-color: rgb(225,150,0);
 }
 
 #purpleColor {
@@ -64,11 +84,18 @@ h1 {
     color: white
 }
 
+#purpleColor:focus {
+    background-color: rgb(100, 0, 100);
+}
+
 #brownColor {
     background-color: brown;
     color: white;
 }
 
+#brownColor:focus {
+    background-color: rgb(120,55,0);
+}
 #blackColor {
     background-color: black;
     color: white
@@ -79,6 +106,14 @@ h1 {
     border: 1px solid #3c3c3c;
 }
 
+#whiteColor:focus {
+    background-color: rgb(230,230,230);
+}
+
 #rainbow {
     background-color: pink;
+}
+
+#rainbow:focus {
+    background-color: #f5cbd2;
 }
