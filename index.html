@@ -61,9 +61,17 @@
         let containerHeight = containerPosition.height;
         let boxWidth = (containerWidth / size) - 2;
         let boxHeight = (containerHeight / size) - 2;
-        if(countDecimals(boxWidth) >= 3) {
+        if(size <= 30) {
+            if(countDecimals(boxWidth) >= 3) {
             boxWidth = Math.floor(boxWidth);
+            }
+        } else if(size <= 60) {
+            boxWidth -= .2;
+        } else {
+            boxWidth -= .19;
         }
+        console.log(boxWidth)
+        console.log(boxHeight)
         boxWidth = boxWidth + 'px';
         boxHeight = boxHeight + 'px';
         let boxes = document.getElementsByClassName('box');
@@ -114,7 +122,10 @@
     applyColor(activeColor);
 
     resetButton.addEventListener('click', function() {
-        size = prompt('Length of sides of square grid:', '16');
+        size = prompt('Length of sides of squared grid (positive integer from 1 to 60):', '16');
+        while(size > 60 || size < 1) {
+            size = prompt('Invalid. Length must be a positive integer from 1 to 60')
+        }
         numberBoxes = size * size;
         clearGrid();
         createGrid(numberBoxes);
